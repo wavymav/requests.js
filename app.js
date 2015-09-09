@@ -15,5 +15,10 @@ request.onreadystatechange = function() {
 // 2) the url that points to the file you want
 request.open('GET', 'about.html');
 
-// Sends out the request to the server
-request.send();
+// sendRequest() fires when the #fire button is clicked
+var sendRequest = function() {
+	// Sends out the request to the server
+	request.send();
+	// Hides the #fire element
+	document.getElementById('fire').style.display = 'none';
+};
