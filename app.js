@@ -9,7 +9,11 @@ request.onreadystatechange = function() {
 		document.getElementById('info').innerHTML = request.responeText;
 	}
 };
+
 // The open method takes tow parameters (this creates the request)
 // 1) http method 'GET' to send the request for data to server
 // 2) the url that points to the file you want
 request.open('GET', 'about.html');
+
+// Sends out the request to the server
+request.send();
