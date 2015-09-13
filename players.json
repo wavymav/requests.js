@@ -1,12 +1,12 @@
 [
 	{
-		"name" : "Robert Griffin III",
+		"name" : "Kirk Cousins",
 		"position" : "QB",
-		"number" : "10",
-		"age" : "25",
+		"number" : "8",
+		"age" : "27",
 		"experience" : "4",
-		"college" : "Baylor",
-		"image" : "http://media.philly.com/images/062812_griffin_400.jpg"
+		"college" : "Michigan State",
+		"image" : "http://media.philly.com/images/032912_cousins_400.jpg"
 	},
 	{
 		"name" : "De Sean Jackson",
