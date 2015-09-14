@@ -1,4 +1,5 @@
 var employeeRequest = new XMLHttpRequest();
+
 employeeRequest.onreadystatechange = function () {
   if (employeeRequest.readyState === 4) {
 		if (employeeRequest.status === 200) {
@@ -17,7 +18,9 @@ employeeRequest.onreadystatechange = function () {
 		}
   }
 };
-employeeRequest.open('GET', '');
+
+employeeRequest.open('GET', 'JSON/employees.json');
+
 employeeRequest.send();
 
 
@@ -25,7 +28,6 @@ employeeRequest.send();
 var meetingRoomRequest = new XMLHttpRequest();
 
 meetingRoomRequest.onreadystatechange = function () {
-
   if (meetingRoomRequest.readyState === 4) {
 		if (meetingRoomRequest.status === 200) {
 	    var rooms = JSON.parse(meetingRoomRequest.responseText),
@@ -43,5 +45,7 @@ meetingRoomRequest.onreadystatechange = function () {
 		}
   }
 };
-meetingRoomRequest.open('GET', '');
+
+meetingRoomRequest.open('GET', 'JSON/rooms.json');
+
 meetingRoomRequest.send();
