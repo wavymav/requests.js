@@ -1,31 +1,40 @@
-var employeeRequest = new XMLHttpRequest();
+// jQuery
+$(document).ready(function() {
+  var urlRooms = 'JSON/rooms.json';
+    $.getJSON(urlRooms, function(response) {
+      var statusTemplate = '<ul class="bulleted">';
+      $.each(response, function(index, room) {
+        if (room.available === true) {
+          statusTemplate += '<li class="empty">';
+        } else {
+          statusTemplate += '<li class="full">';
+        }
+        statusTemplate += room.room +'</li>';
+      });
+      statusTemplate += '</ul>';
+      $('#employeeList').html(statusTemplate);
+    });
 
-employeeRequest.onreadystatechange = function () {
-  if (employeeRequest.readyState === 4) {
-		if (employeeRequest.status === 200) {
-	    var employees = JSON.parse(employeeRequest.responseText),
-	    		statusTemplate = '<ul class="bulleted">';
-	    for (var  i = 0; i < employees.length; i ++) {
-	      if (employees[i].inoffice === true) {
-	        statusTemplate += '<li class="in">';
-	      } else {
-	        statusTemplate += '<li class="out">';
-	      }
-	      statusTemplate += employees[i].name + '</li>';
-	    }
-	    statusHTML += '</ul>';
-			document.getElementById('employeeList').innerHTML = statusTemplate;
-		}
-  }
-};
+    var urlEmployees = 'JSON/employees.json';
+      $.getJSON(urlEmployees, function(response) {
+        var statusTemplate = '<ul class="bulleted">';
+        $.each(response, function(index, employee) {
+          if (employee.inoffice === true) {
+            statusTemplate += '<li class="in">';
+          } else {
+            statusHTML += '<li class="out">';
+          }
+          statusTemplate += employee.name +'</li>';
+        });
+        statusTemplate += '</ul>';
+        $('#employeeList').html(statusTemplate);
+    });
+});
 
-employeeRequest.open('GET', 'JSON/employees.json');
+// ==========================================================================
 
-employeeRequest.send();
-
-
-
-var meetingRoomRequest = new XMLHttpRequest();
+var meetingRoomRequest = new XMLHttpRequest(),
+    employeeRequest = new XMLHttpRequest();
 
 meetingRoomRequest.onreadystatechange = function () {
   if (meetingRoomRequest.readyState === 4) {
@@ -45,7 +54,27 @@ meetingRoomRequest.onreadystatechange = function () {
 		}
   }
 };
-
 meetingRoomRequest.open('GET', 'JSON/rooms.json');
-
 meetingRoomRequest.send();
+
+
+employeeRequest.onreadystatechange = function () {
+  if (employeeRequest.readyState === 4) {
+		if (employeeRequest.status === 200) {
+	    var employees = JSON.parse(employeeRequest.responseText),
+	    		statusTemplate = '<ul class="bulleted">';
+	    for (var  i = 0; i < employees.length; i ++) {
+	      if (employees[i].inoffice === true) {
+	        statusTemplate += '<li class="in">';
+	      } else {
+	        statusTemplate += '<li class="out">';
+	      }
+	      statusTemplate += employees[i].name + '</li>';
+	    }
+	    statusHTML += '</ul>';
+			document.getElementById('employeeList').innerHTML = statusTemplate;
+		}
+  }
+};
+employeeRequest.open('GET', 'JSON/employees.json');
+employeeRequest.send();

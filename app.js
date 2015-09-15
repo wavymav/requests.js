@@ -31,7 +31,8 @@ $(document).ready(function() {
 	});
 });
 
-/*
+// ===================================================================================================
+
 // Create a new http request object
 var request = new XMLHttpRequest();
 
@@ -75,4 +76,3 @@ request.open('GET', 'players.json');
 
 // Sends out the request to the server
 request.send();
-*/
