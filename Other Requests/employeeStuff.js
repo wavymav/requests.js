@@ -13,6 +13,9 @@ $(document).ready(function() {
       });
       statusTemplate += '</ul>';
       $('#employeeList').html(statusTemplate);
+    }).fail(function(failXHR) {
+      var errorMessage = "<p>Sorry! There's been an error. Please try again later.<p>";
+      $('#employeeList').html(errorMessage);
     });
 
     var urlEmployees = 'JSON/employees.json';
