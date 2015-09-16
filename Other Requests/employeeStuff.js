@@ -12,10 +12,10 @@ $(document).ready(function() {
         statusTemplate += room.room +'</li>';
       });
       statusTemplate += '</ul>';
-      $('#employeeList').html(statusTemplate);
+      $('#roomList').html(statusTemplate);
     }).fail(function(failXHR) {
       var errorMessage = "<p>Sorry! There's been an error. Please try again later.<p>";
-      $('#employeeList').html(errorMessage);
+      $('#roomList').html(errorMessage);
     });
 
     var urlEmployees = 'JSON/employees.json';
@@ -31,6 +31,9 @@ $(document).ready(function() {
         });
         statusTemplate += '</ul>';
         $('#employeeList').html(statusTemplate);
+    }).fail(function(failXHR) {
+      var errorMessage = "<p>Sorry! There's been an error. Please try again later.<p>";
+      $('#employeeList').html(errorMessage);
     });
 });
 
